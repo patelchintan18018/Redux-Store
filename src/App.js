@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import Home from "./pages/Home";
+import Basket from "./pages/Basket";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import ProductDeatils from "./components/ProductDeatils";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={store}>
+        <div className="text-center text-4xl font-bold my-5">Redux Store</div>
+        <BrowserRouter>
+          <ToastContainer
+            position="bottom-left"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            
+          />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route path="/Basket" element={<Basket />}></Route>
+            <Route path="/product/:id" element={<ProductDeatils/>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </>
   );
 }
 
