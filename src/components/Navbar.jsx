@@ -13,7 +13,7 @@ const totalItemQuantity = cartProducts.reduce((prev,curr) => prev += curr.itemQu
             <li className=''>
                 <NavLink to='/'  className={({isActive})=>`${isActive?"active":""}`}>Home</NavLink>
             </li>
-            <li className=''>
+            <li className='flex flex-cols justify-center'>
                 <NavLink to='/Basket' className={({isActive})=>`${isActive?"active":""}`}>Basket
                 <span className='text-sm align-top bg-blue-500 rounded-xl p-1 ml-2 text-white'>{totalItemQuantity}</span></NavLink>
             </li>
